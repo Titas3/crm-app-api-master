@@ -1,0 +1,12 @@
+1. Installl MongoDB server and Compass.
+2. Connect to MongoDB from node.js.
+3. Write code to add new customer in mongodb.
+4. Write code to pull customers from MongoDB.
+5. Write code to update an existing customer.
+6. Write code to delete a customer.
+
+
+Client => Server => Database.
+
+Insta App => Picture is sent to server.
+Server sends picture to the database.

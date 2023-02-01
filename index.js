@@ -1,11 +1,14 @@
+
 const express = require("express");
 const bodyparser = require("body-parser");
 const customerRoutes = require("./routes/customerRoutes");
 const userRoutes = require("./routes/userRoutes");
 const server = express();
 const cors = require("cors");
+const mongodb = require("./config/mongodb");
 
 server.listen(4000);
+mongodb.connect();
 server.use(bodyparser.json());
 server.use((req, res, next)=>{
     // Website you wish to allow to connect

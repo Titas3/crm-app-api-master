@@ -1,6 +1,24 @@
 
+const users = [
+    {
+        "name":"John Doe",
+        "username":"john.doe",
+        "password":"Password1",
+        "email":"john.doe@gmail.com",
+        "isActive":true
+    },
+    {
+        "name":"David Doe",
+        "username":"david.doe",
+        "password":"Password1",
+        "email":"david.doe@gmail.com",
+        "isActive":true
+    }
+];
 
-const users = [];
+module.exports.getAll = (req,res)=>{
+    res.status(200).send(users);
+}
 
 module.exports.signup=(req, res)=>{
     let user = req.body;
@@ -11,11 +29,9 @@ module.exports.signup=(req, res)=>{
     return res.status(200).send();
 }
 
-//http://localhost:4000/api/user/signup
-
 module.exports.signin=(req, res)=>{
     let user = req.body;
-    if(!user.email || !user.password){
+    if(!user.email || !user.password || !user.isActive){
         return res.status(400).send("Email and Password is required");
     }
     let foundUser = users.find(i=> i.email==user.email && i.password==user.password);

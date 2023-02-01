@@ -24,15 +24,22 @@ module.exports.get = (req, res)=>{
 
 module.exports.add = (req, res)=>{
     const customer = req.body;
-    console.log(customer);
     customers.push(customer);
-    console.log(customers)
     res.status(200).send(customers);
 }
+
 module.exports.update = (req, res)=>{
     const customer = req.body;
-    let foundCustomerIndex = customer.findIndex(c=> c.name==customer.name);
-    customer[foundCustomerIndex]=customer;
-    console.log(customer);
+    let foundCustomerIndex = customers.findIndex(c=> c.name==customer.name);
+    customers[foundCustomerIndex]=customer;
+    console.log(customers);
+    res.status(200).send(customers);
+}
+
+module.exports.delete = (req, res)=>{
+    const name = req.params.name;
+    let foundCustomerIndex = customers.findIndex(c=> c.name==name);
+    customers.splice(foundCustomerIndex, 1);
+    console.log(customers);
     res.status(200).send(customers);
 }
