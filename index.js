@@ -3,6 +3,7 @@ const express = require("express");
 const bodyparser = require("body-parser");
 const customerRoutes = require("./routes/customerRoutes");
 const userRoutes = require("./routes/userRoutes");
+const ticketRoutes = require("./routes/ticketRoutes");
 const server = express();
 const cors = require("cors");
 const mongodb = require("./config/mongodb");
@@ -32,6 +33,7 @@ server.use(cors());
 
 server.use("/api/customer",customerRoutes.router);
 server.use("/api/user",userRoutes.router);
+server.use("/api/ticket",ticketRoutes.router);
 
 server.get("/", (req, res)=>{
     res.send("Welcome to CRM API");

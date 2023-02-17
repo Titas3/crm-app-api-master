@@ -1,5 +1,12 @@
-1. Redirect to user page from user button.
-2. Display user table.
-3. Add new users.
-4. Update users.
-5. Deactive/Activate
+
+1. Fix Customer update. - Done
+2. Fix Customer Delete. - Done.
+3. Table component to display all issues.
+4. Ability to add a new ticket.
+5. Ability to update ticket's status.
+
+
+New
+Assigned
+InProgress
+Completed

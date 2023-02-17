@@ -12,7 +12,7 @@ const users = [
         "username":"david.doe",
         "password":"Password1",
         "email":"david.doe@gmail.com",
-        "isActive":true
+        "isActive":false
     }
 ];
 
@@ -31,7 +31,7 @@ module.exports.signup=(req, res)=>{
 
 module.exports.signin=(req, res)=>{
     let user = req.body;
-    if(!user.email || !user.password || !user.isActive){
+    if(!user.email || !user.password){
         return res.status(400).send("Email and Password is required");
     }
     let foundUser = users.find(i=> i.email==user.email && i.password==user.password);
@@ -40,5 +40,18 @@ module.exports.signin=(req, res)=>{
     }else{
         return res.status(200).send();
     }
-    
+}
+
+module.exports.activate = (req, res)=>{
+    const name = req.params.username;
+    let foundUserIndex = users.findIndex(c=> c.username==name);
+    users[foundUserIndex].isActive=true;
+    res.status(200).send(users);
+}
+
+module.exports.deActivate = (req, res)=>{
+    const name = req.params.username;
+    let foundUserIndex = users.findIndex(c=> c.username==name);
+    users[foundUserIndex].isActive=false;
+    res.status(200).send(users);
 }
